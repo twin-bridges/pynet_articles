@@ -53,4 +53,6 @@ for net_device in (cisco, arista, junos, nxos):
         overwrite_file=True,
     )
     print(transfer_dict)
-    pause = input("Hit enter to continue: ")
+
+    # Skip the pause (for automated testing)
+    # pause = input("Hit enter to continue: ")
