@@ -42,3 +42,12 @@ def test_article_netmiko_scp():
     assert return_code == 0
     assert std_err == ""
     assert std_out.count("file_exists") == 4
+
+
+def test_article_netmiko_ssh_proxy():
+    base_path = "../netmiko_proxy/"
+    cmd_list = ["python", "ssh_proxy.py"]
+    std_out, std_err, return_code = subprocess_runner(cmd_list, exercise_dir=base_path)
+    assert return_code == 0
+    assert std_err == ""
+    assert std_out.count("User") == 2
