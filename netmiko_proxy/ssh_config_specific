@@ -1,0 +1,10 @@
+# The intermediate server
+host jumphost
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/test_rsa
+  User gituser
+  HostName pynetqa.lasthop.io
+
+host cisco1.lasthop.io
+  User pyclass
+  ProxyCommand ssh -F ~/pynet_articles/netmiko_proxy/ssh_config -W %h:%p jumphost

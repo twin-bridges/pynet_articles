@@ -1,0 +1,15 @@
+# The intermediate server
+host jumphost
+  # Use only the key specified in IdentityFile
+  IdentitiesOnly yes
+  # The SSH key to use to the intermediate server
+  IdentityFile ~/.ssh/test_rsa_encr
+  User gituser
+  HostName pynetqa.lasthop.io
+
+host * !jumphost
+  User pyclass
+  # -F forces usage of this SSH config file
+  ProxyCommand ssh -F ~/pynet_articles/netmiko_proxy/ssh_config2 -W %h:%p jumphost
+  # Alternate solution using netcat
+  # ProxyCommand ssh -F ~/pynet_articles/netmiko_proxy/ssh_config jumphost nc %h:%p
